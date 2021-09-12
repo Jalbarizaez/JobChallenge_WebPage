@@ -1,0 +1,38 @@
+<div class = "container mt-4">
+    <div class = "card">
+        <div class="card-body">
+            <span class="h3">List of packages</span>
+            <button class="btn btn-dark btn-lg float-end" routerLink = "/create-package">Create Package</button>
+            <table class="table mt-4 table-secondary">
+                <thead>
+                  <tr>
+                    <th scope="col">Client Name</th>
+                    <th scope="col">Street Addres</th>
+                    <th scope="col">Postal Code</th>
+                    <th scope="col">Package Weight</th>
+                    <th scope="col">Delivered</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let package of data">
+                    <td>{{ package.clientname }}</td>
+                    <td>{{ package.addressstreet }}</td>
+                    <td>{{ package.addresspostalcode }}</td>
+                    <td>{{ package.packageweight }}.lb</td>
+                    <td *ngIf="package.isdelivered; else elseBlock" >Delivery Complete</td>
+                    <ng-template #elseBlock>
+                      <td>Delivery Not Completed</td>
+                    </ng-template>            
+                    <td>
+                        <i (click) = "updatePackage(package.id)" class="fas fa-edit fa-lg text-infi me-4"></i>
+                        <i (click) = "deletePackage(package.id)" class="far fa-trash-alt fa-lg text-danger"></i>
+                    </td>
+
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

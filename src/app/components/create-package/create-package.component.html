@@ -1,0 +1,27 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Create Package
+                        <div *ngIf="loading"  class="spinner-border float-end" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                    </h3>
+                    <span *ngIf="submitted && createPackage.invalid"  class="badge bg-danger">You need to complete all the fields</span>
+                    <form class="mt-4" [formGroup] = "createPackage" (ngSubmit) = 'addPackage()'>
+                       
+                        <input type="text" class="form-control form-control-lg mt-3" formControlName="name" placeholder="Client Name">
+                        <input type="text" class="form-control form-control-lg mt-3" formControlName="address" placeholder="Address">
+                        <input type="text" class="form-control form-control-lg mt-3" formControlName="weigth" placeholder="Package Weight">
+                        <input type="text" class="form-control form-control-lg mt-3" formControlName="postalCode" placeholder="Postal Code">
+                        <div class="mt-3">
+                            <button type="text" class="btn btn-secondary btn-lg me-3" routerLink = "list-packages">Return</button>
+                            <button type="submit" class="btn btn-dark btn-lg">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
